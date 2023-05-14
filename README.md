@@ -4,7 +4,7 @@
 
 The associated Xcode project implements an iOS and macOS [SwiftUI] app that employs [AVAudioEngine] to play pure audio tones for various waveform types and frequencies by sampling mathematical functions. Frequency tones can be saved to [WAV] files of various durations, using [AVFoundation] to write audio sample buffers. 
 
-<!-- Learn more about plotting audio samples from our [in-depth blog post](https://www.limit-point.com/blog/2023/tone-player). -->
+Learn more about how to play and save frequency tones from our [in-depth blog post](https://www.limit-point.com/blog/2023/tone-player).
 
 Frequencies are selected smoothly and continuously from a slider, entered directly with keyboard into a text field, or selected from a table of note buttons labelled A0 to B8, in the standard piano keyboard and grouped in octave 0 to octave 8.
 
