@@ -1,0 +1,429 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CD49D969299933D50062C494 /* PlotObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD49D968299933D50062C494 /* PlotObservable.swift */; };
+		CD49D96B299933EA0062C494 /* PlotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD49D96A299933EA0062C494 /* PlotView.swift */; };
+		CD49D96D2999346B0062C494 /* Draw.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD49D96C2999346B0062C494 /* Draw.swift */; };
+		CD49D96F299935D30062C494 /* FileManagerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD49D96E299935D30062C494 /* FileManagerExtensions.swift */; };
+		CD49D971299938390062C494 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD49D970299938390062C494 /* Component.swift */; };
+		CD8AFDF929A1BDAF00A0A16F /* PianoNoteToFrequencyMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8AFDF829A1BDAF00A0A16F /* PianoNoteToFrequencyMapping.swift */; };
+		CD8AFE1C29A3516F00A0A16F /* OctaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8AFE1B29A3516F00A0A16F /* OctaveView.swift */; };
+		CD8AFE2129A5007700A0A16F /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CD8AFE2029A5007700A0A16F /* Credits.rtf */; };
+		CD8AFE2329A5028D00A0A16F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8AFE2229A5028D00A0A16F /* Constants.swift */; };
+		CD8AFE2529A54E5300A0A16F /* ToneWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8AFE2429A54E5300A0A16F /* ToneWriter.swift */; };
+		CD998935298DC0ED0045DD8F /* TonePlayerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD998934298DC0ED0045DD8F /* TonePlayerApp.swift */; };
+		CD998937298DC0ED0045DD8F /* TonePlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD998936298DC0ED0045DD8F /* TonePlayerView.swift */; };
+		CD998939298DC0EF0045DD8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD998938298DC0EF0045DD8F /* Assets.xcassets */; };
+		CD99893D298DC0EF0045DD8F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD99893C298DC0EF0045DD8F /* Preview Assets.xcassets */; };
+		CD998944298DC2000045DD8F /* TonePlayerObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD998943298DC2000045DD8F /* TonePlayerObservable.swift */; };
+		CD998946298DC3FD0045DD8F /* ToneGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD998945298DC3FD0045DD8F /* ToneGenerator.swift */; };
+		CDA10D0629A70B1F0039CB7D /* AudioDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA10D0529A70B1F0039CB7D /* AudioDocument.swift */; };
+		CDA10D0829A723490039CB7D /* ExportAudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA10D0729A723490039CB7D /* ExportAudioView.swift */; };
+		CDDA655829A6CE820090B671 /* FavoriteFrequenciesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDA655729A6CE820090B671 /* FavoriteFrequenciesView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CD49D968299933D50062C494 /* PlotObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlotObservable.swift; sourceTree = "<group>"; };
+		CD49D96A299933EA0062C494 /* PlotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlotView.swift; sourceTree = "<group>"; };
+		CD49D96C2999346B0062C494 /* Draw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Draw.swift; sourceTree = "<group>"; };
+		CD49D96E299935D30062C494 /* FileManagerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerExtensions.swift; sourceTree = "<group>"; };
+		CD49D970299938390062C494 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
+		CD8AFDF829A1BDAF00A0A16F /* PianoNoteToFrequencyMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoNoteToFrequencyMapping.swift; sourceTree = "<group>"; };
+		CD8AFE1B29A3516F00A0A16F /* OctaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OctaveView.swift; sourceTree = "<group>"; };
+		CD8AFE1F29A431DF00A0A16F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CD8AFE2029A5007700A0A16F /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+		CD8AFE2229A5028D00A0A16F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CD8AFE2429A54E5300A0A16F /* ToneWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToneWriter.swift; sourceTree = "<group>"; };
+		CD998931298DC0ED0045DD8F /* TonePlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TonePlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD998934298DC0ED0045DD8F /* TonePlayerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TonePlayerApp.swift; sourceTree = "<group>"; };
+		CD998936298DC0ED0045DD8F /* TonePlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TonePlayerView.swift; sourceTree = "<group>"; };
+		CD998938298DC0EF0045DD8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CD99893A298DC0EF0045DD8F /* TonePlayer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TonePlayer.entitlements; sourceTree = "<group>"; };
+		CD99893C298DC0EF0045DD8F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CD998943298DC2000045DD8F /* TonePlayerObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TonePlayerObservable.swift; sourceTree = "<group>"; };
+		CD998945298DC3FD0045DD8F /* ToneGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToneGenerator.swift; sourceTree = "<group>"; };
+		CDA10D0529A70B1F0039CB7D /* AudioDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioDocument.swift; sourceTree = "<group>"; };
+		CDA10D0729A723490039CB7D /* ExportAudioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportAudioView.swift; sourceTree = "<group>"; };
+		CDDA655729A6CE820090B671 /* FavoriteFrequenciesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFrequenciesView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CD99892E298DC0ED0045DD8F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CD998928298DC0ED0045DD8F = {
+			isa = PBXGroup;
+			children = (
+				CD998933298DC0ED0045DD8F /* TonePlayer */,
+				CD998932298DC0ED0045DD8F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CD998932298DC0ED0045DD8F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CD998931298DC0ED0045DD8F /* TonePlayer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CD998933298DC0ED0045DD8F /* TonePlayer */ = {
+			isa = PBXGroup;
+			children = (
+				CD8AFE1F29A431DF00A0A16F /* Info.plist */,
+				CD8AFE2229A5028D00A0A16F /* Constants.swift */,
+				CD998934298DC0ED0045DD8F /* TonePlayerApp.swift */,
+				CD998943298DC2000045DD8F /* TonePlayerObservable.swift */,
+				CD998936298DC0ED0045DD8F /* TonePlayerView.swift */,
+				CD998945298DC3FD0045DD8F /* ToneGenerator.swift */,
+				CD8AFE2429A54E5300A0A16F /* ToneWriter.swift */,
+				CD49D970299938390062C494 /* Component.swift */,
+				CD49D968299933D50062C494 /* PlotObservable.swift */,
+				CD49D96A299933EA0062C494 /* PlotView.swift */,
+				CD8AFE1B29A3516F00A0A16F /* OctaveView.swift */,
+				CDDA655729A6CE820090B671 /* FavoriteFrequenciesView.swift */,
+				CDA10D0729A723490039CB7D /* ExportAudioView.swift */,
+				CD49D96C2999346B0062C494 /* Draw.swift */,
+				CD49D96E299935D30062C494 /* FileManagerExtensions.swift */,
+				CD8AFDF829A1BDAF00A0A16F /* PianoNoteToFrequencyMapping.swift */,
+				CDA10D0529A70B1F0039CB7D /* AudioDocument.swift */,
+				CD998938298DC0EF0045DD8F /* Assets.xcassets */,
+				CD99893A298DC0EF0045DD8F /* TonePlayer.entitlements */,
+				CD8AFE2029A5007700A0A16F /* Credits.rtf */,
+				CD99893B298DC0EF0045DD8F /* Preview Content */,
+			);
+			path = TonePlayer;
+			sourceTree = "<group>";
+		};
+		CD99893B298DC0EF0045DD8F /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				CD99893C298DC0EF0045DD8F /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CD998930298DC0ED0045DD8F /* TonePlayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD998940298DC0EF0045DD8F /* Build configuration list for PBXNativeTarget "TonePlayer" */;
+			buildPhases = (
+				CD99892D298DC0ED0045DD8F /* Sources */,
+				CD99892E298DC0ED0045DD8F /* Frameworks */,
+				CD99892F298DC0ED0045DD8F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TonePlayer;
+			productName = TonePlayer;
+			productReference = CD998931298DC0ED0045DD8F /* TonePlayer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CD998929298DC0ED0045DD8F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					CD998930298DC0ED0045DD8F = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = CD99892C298DC0ED0045DD8F /* Build configuration list for PBXProject "TonePlayer" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CD998928298DC0ED0045DD8F;
+			productRefGroup = CD998932298DC0ED0045DD8F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CD998930298DC0ED0045DD8F /* TonePlayer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CD99892F298DC0ED0045DD8F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD99893D298DC0EF0045DD8F /* Preview Assets.xcassets in Resources */,
+				CD8AFE2129A5007700A0A16F /* Credits.rtf in Resources */,
+				CD998939298DC0EF0045DD8F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CD99892D298DC0ED0045DD8F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD49D96D2999346B0062C494 /* Draw.swift in Sources */,
+				CD49D971299938390062C494 /* Component.swift in Sources */,
+				CD8AFE2529A54E5300A0A16F /* ToneWriter.swift in Sources */,
+				CDDA655829A6CE820090B671 /* FavoriteFrequenciesView.swift in Sources */,
+				CD49D96F299935D30062C494 /* FileManagerExtensions.swift in Sources */,
+				CD998937298DC0ED0045DD8F /* TonePlayerView.swift in Sources */,
+				CD49D96B299933EA0062C494 /* PlotView.swift in Sources */,
+				CD8AFDF929A1BDAF00A0A16F /* PianoNoteToFrequencyMapping.swift in Sources */,
+				CD8AFE1C29A3516F00A0A16F /* OctaveView.swift in Sources */,
+				CD998935298DC0ED0045DD8F /* TonePlayerApp.swift in Sources */,
+				CDA10D0629A70B1F0039CB7D /* AudioDocument.swift in Sources */,
+				CD998944298DC2000045DD8F /* TonePlayerObservable.swift in Sources */,
+				CD49D969299933D50062C494 /* PlotObservable.swift in Sources */,
+				CD998946298DC3FD0045DD8F /* ToneGenerator.swift in Sources */,
+				CD8AFE2329A5028D00A0A16F /* Constants.swift in Sources */,
+				CDA10D0829A723490039CB7D /* ExportAudioView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		CD99893E298DC0EF0045DD8F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CD99893F298DC0EF0045DD8F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		CD998941298DC0EF0045DD8F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TonePlayer/TonePlayer.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"TonePlayer/Preview Content\"";
+				DEVELOPMENT_TEAM = GZABHNF58X;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TonePlayer/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TonePlayer;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0.4;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.limit-point.TonePlayer";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CD998942298DC0EF0045DD8F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TonePlayer/TonePlayer.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"TonePlayer/Preview Content\"";
+				DEVELOPMENT_TEAM = GZABHNF58X;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TonePlayer/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TonePlayer;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0.4;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.limit-point.TonePlayer";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CD99892C298DC0ED0045DD8F /* Build configuration list for PBXProject "TonePlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD99893E298DC0EF0045DD8F /* Debug */,
+				CD99893F298DC0EF0045DD8F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD998940298DC0EF0045DD8F /* Build configuration list for PBXNativeTarget "TonePlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD998941298DC0EF0045DD8F /* Debug */,
+				CD998942298DC0EF0045DD8F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CD998929298DC0ED0045DD8F /* Project object */;
+}
