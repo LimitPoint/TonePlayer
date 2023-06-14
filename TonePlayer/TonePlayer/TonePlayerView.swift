@@ -294,8 +294,9 @@ struct PlayButton: View {
         Group {
             if tonePlayerObservable.isPlaying {
                 Button {
-                    tonePlayerObservable.stopPlaying() 
-                    plotObservable.stopPlayTimer()
+                    tonePlayerObservable.stopPlaying {
+                        plotObservable.stopPlayTimer()
+                    }
                 } label: {
                     Image(systemName: "stop.circle")
                         .foregroundStyle(.red, .gray)
@@ -303,8 +304,11 @@ struct PlayButton: View {
             }
             else {
                 Button {
-                    tonePlayerObservable.startPlaying() 
-                    plotObservable.startPlayTimer()
+                    tonePlayerObservable.startPlaying { success in
+                        if success {
+                            plotObservable.startPlayTimer()
+                        }
+                    }
                 } label: {
                     Image(systemName: "play.circle")
                         .foregroundStyle(.green, .gray)
