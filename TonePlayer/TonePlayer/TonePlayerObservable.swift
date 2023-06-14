@@ -37,8 +37,8 @@ class TonePlayerObservable: ObservableObject {
         // for ramping samples on start/stop
     var stopEngineDispatchGroup:DispatchGroup?
     let stopQueue = DispatchQueue(label: "com.limit-point.tone-player-stop-queue")
-    var stopRequested = false
-    var startRequested = false
+    var stopRequested = false // used to ramp down audio volume for a smooth stop
+    var startRequested = false // used to ramp up audio volume for a smooth start
     
     @Published var isPlaying = false
     
@@ -156,30 +156,40 @@ class TonePlayerObservable: ObservableObject {
         return samples
     }
     
-    func startPlaying() {
+    func startPlaying(completion: @escaping (Bool) -> ()) {
         do {
             try engine.start()
             startRequested = true
-            self.isPlaying = true
+            DispatchQueue.main.async { [weak self] in
+                self?.isPlaying = true
+                completion(true)
+            }
         }
         catch {
+            DispatchQueue.main.async { [weak self] in
+                self?.isPlaying = false
+                completion(false)
+            }
             print("Error starting audio engine.")
         }
     }
     
-    func stopPlaying() {
+    func stopPlaying(completion: @escaping () -> ()) {
         
-        stopRequested = true
+        DispatchQueue.main.async { [weak self] in
+            self?.isPlaying = false
+            completion()
+        }
         
-        stopEngineDispatchGroup = DispatchGroup()
-        
-        stopEngineDispatchGroup?.enter()
-        
-        stopEngineDispatchGroup?.notify(queue: stopQueue) { [weak self] in
-            self?.stopRequested = false
-            self?.engine.stop()
-            DispatchQueue.main.async { 
-                self?.isPlaying = false
+        if stopRequested == false, engine.isRunning {
+            
+            stopRequested = true
+            
+            stopEngineDispatchGroup = DispatchGroup()
+            stopEngineDispatchGroup?.enter()
+            stopEngineDispatchGroup?.notify(queue: stopQueue) { [weak self] in
+                self?.stopRequested = false
+                self?.engine.stop()
             }
         }
     }
