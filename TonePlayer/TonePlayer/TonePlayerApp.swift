@@ -47,10 +47,12 @@ struct TonePlayerApp: App {
 #if os(iOS)         
         func setUpAudioSession() {
             do {
-                try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, policy: .longFormAudio)
+                try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [.mixWithOthers])
             } catch {
-                print("Failed to set audio session route sharing policy: \(error)")
+                print("Failed to set audio session route sharing policy: \(error.localizedDescription)")
             }
+            
+            print("Configured audio session")
         }
         
         let notificationCenter = NotificationCenter.default
