@@ -36,8 +36,9 @@ struct ExportAudioView: View {
             HStack {
                 Button(action: {
                     if tonePlayerObservable.isPlaying {
-                        tonePlayerObservable.stopPlaying() 
-                        plotObservable.stopPlayTimer()
+                        tonePlayerObservable.stopPlaying {
+                            plotObservable.stopPlayTimer()
+                        }
                     }
                     tonePlayerObservable.exportToneAudio(duration, toneRampType)
                 }, label: {
