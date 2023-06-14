@@ -56,10 +56,87 @@ class TonePlayerObservable: ObservableObject {
     var cancelBag = Set<AnyCancellable>()
     
         // MARK: Audio Engine
+        
+        // handle notifications for changes to audio output device
+#if os(iOS)     
+    @Published var shouldStopPlaying = false
+    @Published var shouldStartPlaying = false
+
+    @objc func handleAudioInterruption(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let interruptionTypeRawValue = userInfo[AVAudioSessionInterruptionTypeKey] as? UInt,
+              let interruptionType = AVAudioSession.InterruptionType(rawValue: interruptionTypeRawValue) else {
+            return
+        }
+        
+        switch interruptionType {
+            case .began:
+                DispatchQueue.main.async { [weak self] in
+                    self?.shouldStopPlaying = true
+                }
+            case .ended:
+                guard let interruptionOptionRawValue = userInfo[AVAudioSessionInterruptionOptionKey] as? UInt else {
+                    return
+                }
+                
+                let interruptionOption = AVAudioSession.InterruptionOptions(rawValue: interruptionOptionRawValue)
+                
+                if interruptionOption.contains(.shouldResume) {
+                    DispatchQueue.main.async { [weak self] in
+                        self?.shouldStartPlaying = true
+                    }
+                }
+            @unknown default:
+                break
+        }
+    }
+    
+    @objc func handleRouteChange(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let reasonValue = userInfo[AVAudioSessionRouteChangeReasonKey] as? UInt,
+              let reason = AVAudioSession.RouteChangeReason(rawValue: reasonValue) else {
+            return
+        }
+        
+        switch reason {
+            case .oldDeviceUnavailable:
+                DispatchQueue.main.async { [weak self] in
+                    self?.shouldStopPlaying = true
+                }
+            case .newDeviceAvailable:
+                DispatchQueue.main.async { [weak self] in
+                    self?.shouldStartPlaying = true
+                }
+            default:
+                break
+        }
+    }
+#else
+    @Published var audioEngineConfigurationChanged = false
+    
+    @objc func handleAudioEngineConfigurationChange(_ notification: Notification) { 
+        DispatchQueue.main.async { [weak self] in
+            self?.audioEngineConfigurationChanged = true
+        }
+    }
+#endif
     
     init(component:Component) {
         self.component = component
         toneGenerator = ToneGenerator(component: component)
+
+        // register for notifications to handle changes to audio output device
+#if os(iOS)   
+        NotificationCenter.default.addObserver(self, selector: #selector(handleAudioInterruption(notification:)), name: AVAudioSession.interruptionNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleRouteChange), name: AVAudioSession.routeChangeNotification, object: nil)
+#else
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(handleAudioEngineConfigurationChange(_:)),
+                                               name: .AVAudioEngineConfigurationChange,
+                                               object: engine)
+#endif
+        
         connectAudioEngine()
         
         $favoriteFrequencies.sink { [weak self]  newFrequencies in 
