@@ -440,7 +440,48 @@ struct TonePlayerView: View {
                 ControlView(tonePlayerObservable: tonePlayerObservable, plotObservable: plotObservable)
             }
         }
-#if os(iOS)   
+#if os(macOS) 
+        .onChange(of: tonePlayerObservable.audioEngineConfigurationChanged) { audioEngineConfigurationChanged in
+            DispatchQueue.main.async {
+                tonePlayerObservable.audioEngineConfigurationChanged = false
+                if tonePlayerObservable.isPlaying {
+                    tonePlayerObservable.stopPlaying { 
+                        plotObservable.stopPlayTimer()
+                        tonePlayerObservable.startPlaying { success in
+                            if success {
+                                plotObservable.startPlayTimer()
+                            }
+                        }
+                    }
+                }
+            }
+        }
+#endif
+#if os(iOS) 
+        .onChange(of: tonePlayerObservable.shouldStopPlaying) { shouldStopPlaying in
+            
+            if shouldStopPlaying == true {
+                DispatchQueue.main.async {
+                    tonePlayerObservable.shouldStopPlaying = false
+                    tonePlayerObservable.stopPlaying { 
+                        plotObservable.stopPlayTimer()
+                    }
+                }
+            }
+        }
+        .onChange(of: tonePlayerObservable.shouldStartPlaying) { shouldStartPlaying in
+            
+            if shouldStartPlaying == true {
+                DispatchQueue.main.async {
+                    tonePlayerObservable.shouldStartPlaying = false
+                    tonePlayerObservable.startPlaying { success in
+                        if success {
+                            plotObservable.startPlayTimer()
+                        }
+                    }
+                }
+            }
+        }  
         .toolbar {
             ToolbarItemGroup(placement: .keyboard) {
                 Button {
