@@ -56,6 +56,10 @@ struct OctaveView: View {
                                         Text(tuple.note)
                                     }
                                 }
+                                #if os(macOS)
+                                .foregroundColor(.blue) 
+                                .buttonStyle(PlainButtonStyle())
+                                #endif
                                 .overlay(tonePlayerObservable.component.frequency == tuple.frequency ? RoundedRectangle(cornerRadius: 6) .stroke(.red, lineWidth: 1) : nil)
                             }
                         }

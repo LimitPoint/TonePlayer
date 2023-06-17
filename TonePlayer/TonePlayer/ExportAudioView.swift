@@ -97,10 +97,6 @@ struct ExportAudioView: View {
                 
                 Text("Preview")
             }
-            
-            
-            
-            
         }
         .fileExporter(isPresented: $tonePlayerObservable.showAudioExporter, document: tonePlayerObservable.audioDocument, contentType: UTType.wav, defaultFilename: tonePlayerObservable.audioDocument?.filename) { result in
             if case .success = result {
