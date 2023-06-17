@@ -63,6 +63,9 @@ struct ExportAudioView: View {
             VStack(alignment: .leading) {
                 HStack {
                     Button(action: {
+                        tonePlayerObservable.stopPlaying {
+                            plotObservable.stopPlayTimer()
+                        }
                         tonePlayerObservable.stopAudioURL()
                         
                         tonePlayerObservable.generateToneAudio(2, toneRampType) { url in
