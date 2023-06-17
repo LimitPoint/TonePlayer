@@ -11,7 +11,7 @@ import Combine
 import AVFoundation
 
 enum ToneRampType: String, CaseIterable, Identifiable {
-    case none, linear, parablic, exponential
+    case none, linear, parabolic, exponential
     var id: Self { self }
 }
 
@@ -400,7 +400,7 @@ class TonePlayerObservable: ObservableObject {
                 scale = nil
             case .linear:
                 scale = {t in 1 - (t / duration)}
-            case .parablic:
+            case .parabolic:
                 scale = {t in pow(((t - duration)/duration), 2)}
             case .exponential:
                 let a = log(Double(Int16.max)) / duration
