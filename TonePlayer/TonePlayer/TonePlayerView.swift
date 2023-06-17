@@ -404,7 +404,7 @@ struct ControlView: View {
                 
                 VolumeView(tonePlayerObservable: tonePlayerObservable)
                 
-                HStack {
+                VStack {
                     PlayButton(tonePlayerObservable: tonePlayerObservable, plotObservable: plotObservable)
                         .padding()
                     
