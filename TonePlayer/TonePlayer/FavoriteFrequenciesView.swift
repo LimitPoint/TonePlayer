@@ -10,6 +10,7 @@ import SwiftUI
 struct FavoriteFrequenciesView: View {
     
     @ObservedObject var tonePlayerObservable:TonePlayerObservable 
+    @ObservedObject var plotObservable:PlotObservable 
     
     @State private var showDeleteConfirmationAlert = false
     @State private var showDeleteAllConfirmationAlert = false
@@ -42,6 +43,9 @@ struct FavoriteFrequenciesView: View {
                 Spacer()
                 
                 Button(action: {
+                    if tonePlayerObservable.isPlaying {
+                        plotObservable.stopPlayTimer()
+                    }
                     showDeleteAllConfirmationAlert = true
                 }) {
                     Text("Delete All")
@@ -56,7 +60,15 @@ struct FavoriteFrequenciesView: View {
             .alert(isPresented: $showDeleteAllConfirmationAlert) {
                 Alert(title: Text("Confirm"), message: Text("Are you sure you want to delete all favorites frequencies?\n\nThis cannot be undone."), primaryButton: .destructive(Text("Yes")) {
                     tonePlayerObservable.deleteAllFrequencyFavorites()
-                }, secondaryButton: .cancel())
+                    if tonePlayerObservable.isPlaying {
+                        plotObservable.startPlayTimer()
+                    }
+                }, secondaryButton: .cancel() {
+                    if tonePlayerObservable.isPlaying {
+                        plotObservable.startPlayTimer()
+                    }
+                })
+
             }
             
             List {
@@ -102,6 +114,6 @@ struct FavoriteFrequenciesView: View {
 
 struct FavoriteFrequenciesView_Previews: PreviewProvider {
     static var previews: some View {
-        FavoriteFrequenciesView(tonePlayerObservable: TonePlayerObservable(component: defaultComponent))
+        FavoriteFrequenciesView(tonePlayerObservable: TonePlayerObservable(component: defaultComponent), plotObservable: PlotObservable(defaultComponent.type))
     }
 }
