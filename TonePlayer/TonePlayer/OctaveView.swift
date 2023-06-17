@@ -12,16 +12,29 @@ struct OctaveView: View {
     @ObservedObject var tonePlayerObservable:TonePlayerObservable 
     @ObservedObject var plotObservable:PlotObservable 
     
+    @State var showFrequencies = false
+    
     var body: some View {
         VStack {
             HStack {
                 
                 Button("Done", action: { 
                     tonePlayerObservable.isShowingOctaveView = false
-                }).padding()
+                })
+                .padding()
                 
                 PlayButton(tonePlayerObservable: tonePlayerObservable, plotObservable: plotObservable)
                 
+                Spacer()
+                
+                VStack(alignment: .trailing) {
+                    Toggle(isOn: $showFrequencies) {
+                        
+                    }
+            
+                    Text("Show Frequencies")
+                }
+                .padding()
             }
         
             ScrollView {
@@ -32,7 +45,16 @@ struct OctaveView: View {
                                 Button(action: {
                                     tonePlayerObservable.component.frequency = tuple.frequency
                                 }) {
-                                    Text(tuple.note)
+                                    if showFrequencies {
+                                        VStack {
+                                            Text(tuple.note)
+                                            Text(String(format: "%.2f", tuple.frequency))
+                                                .font(.caption)
+                                        }
+                                    }
+                                    else {
+                                        Text(tuple.note)
+                                    }
                                 }
                                 .overlay(tonePlayerObservable.component.frequency == tuple.frequency ? RoundedRectangle(cornerRadius: 6) .stroke(.red, lineWidth: 1) : nil)
                             }
@@ -40,6 +62,7 @@ struct OctaveView: View {
                     }
                 }
             }
+            .animation(.easeInOut(duration: 0.5), value: showFrequencies)
         }
         .background(Color.white)
     }
