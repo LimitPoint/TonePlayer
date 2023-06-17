@@ -26,14 +26,14 @@ struct ExportAudioView: View {
     @ObservedObject var plotObservable:PlotObservable 
     
     @State var duration:Double = 3
-    @State var toneRampType:ToneRampType = .none
+    @State var toneRampType:ToneRampType = .exponential
     
     @State var exportAlertInfo:ExportAlertInfo?
     
     var body: some View {
-        VStack {
+        HStack {
             
-            HStack {
+            VStack {
                 Button(action: {
                     if tonePlayerObservable.isPlaying {
                         tonePlayerObservable.stopPlaying {
@@ -47,43 +47,57 @@ struct ExportAudioView: View {
                             .foregroundStyle(.green, .gray)
                     }
                 })
+                .buttonStyle(BorderlessButtonStyle())
+                .font(.system(size: 32, weight: .light))
+                .frame(width: 44, height: 44)
+                .imageScale(.large)
                 
-                Button(action: {
-                    tonePlayerObservable.stopAudioURL()
-                                        
-                    tonePlayerObservable.generateToneAudio(duration, toneRampType) { url in
-                        if let url = url {
-                            tonePlayerObservable.playAudioURL(url)
-                        }
-                        else {
-                            print("Error - Tone not exported.")
-                        }
+                Picker("", selection: $duration) {
+                    ForEach(exportToneAudioDurations, id: \.self) { value in
+                        Text("\(String(format: "%.0f", value))")
                     }
-                }, label: {
-                    HStack {
-                        Image(systemName: "wave.3.right.circle")
-                            .foregroundStyle(.green, .gray)
-                    }
-                })
-            }
-            .buttonStyle(BorderlessButtonStyle())
-            .font(.system(size: 32, weight: .light))
-            .frame(width: 44, height: 44)
-            .imageScale(.large)
-                        
-            Picker("", selection: $duration) {
-                ForEach(exportToneAudioDurations, id: \.self) { value in
-                    Text("\(String(format: "%.0f", value))")
                 }
+                .frame(width: 100)
             }
-            .frame(width: 100)
             
-            Picker("", selection: $toneRampType) {
-                ForEach(ToneRampType.allCases) { type in
-                    Text(type.rawValue.capitalized)
+            VStack(alignment: .leading) {
+                HStack {
+                    Button(action: {
+                        tonePlayerObservable.stopAudioURL()
+                        
+                        tonePlayerObservable.generateToneAudio(2, toneRampType) { url in
+                            if let url = url {
+                                tonePlayerObservable.playAudioURL(url)
+                            }
+                            else {
+                                print("Error - Tone not exported.")
+                            }
+                        }
+                    }, label: {
+                        HStack {
+                            Image(systemName: "wave.3.right.circle")
+                                .foregroundStyle(.green, .gray)
+                        }
+                    })
+                    .buttonStyle(BorderlessButtonStyle())
+                    .font(.system(size: 32, weight: .light))
+                    .frame(width: 44, height: 44)
+                    .imageScale(.large)
+                    
+                    Picker("", selection: $toneRampType) {
+                        ForEach(ToneRampType.allCases) { type in
+                            Text(type.rawValue.capitalized)
+                        }
+                    }
+                    .frame(width: 130)
                 }
+                
+                Text("Preview")
             }
-            .frame(width: 130)
+            
+            
+            
+            
         }
         .fileExporter(isPresented: $tonePlayerObservable.showAudioExporter, document: tonePlayerObservable.audioDocument, contentType: UTType.wav, defaultFilename: tonePlayerObservable.audioDocument?.filename) { result in
             if case .success = result {
