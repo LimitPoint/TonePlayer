@@ -416,7 +416,7 @@ struct ControlView: View {
                         .padding()
                 }
                 
-                FavoriteFrequenciesView(tonePlayerObservable: tonePlayerObservable)
+                FavoriteFrequenciesView(tonePlayerObservable: tonePlayerObservable, plotObservable: plotObservable)
                     .frame(minHeight: 900)
                 
             }
