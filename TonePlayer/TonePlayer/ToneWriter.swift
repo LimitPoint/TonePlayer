@@ -9,7 +9,7 @@ import SwiftUI
 import Foundation
 import AVFoundation
 
-var toneWriter = ToneWriter(sampleRate: 44100, bufferSize: 8192)
+var toneWriter = ToneWriter(sampleRate: 44100)
 
 /*
  Solve for t: e^(-2t) = 1/Int16.max, smallest positive value of Int16 (where positive means > 0)
@@ -59,7 +59,6 @@ class ToneWriter {
     
         // for file writing
     var sampleRate:Int
-    var bufferSize:Int
     
     let kAudioWriterExpectsMediaDataInRealTime = false
     let kToneGeneratorQueue = "com.limit-point.tone-generator-queue"
@@ -68,9 +67,8 @@ class ToneWriter {
     
     var sampleDuration = CMTime.zero
     
-    init(sampleRate:Int, bufferSize:Int) {
+    init(sampleRate:Int) {
         self.sampleRate = sampleRate
-        self.bufferSize = bufferSize
         self.sampleDuration = CMTimeMakeWithSeconds((1.0 / Float64(sampleRate)), preferredTimescale: Int32.max)
     }
     
@@ -169,7 +167,7 @@ class ToneWriter {
         return sampleBuffer
     }
     
-    func sampleBufferForComponent(component:Component, bufferIndex:Int, samplesRemaining:Int?) -> CMSampleBuffer? {
+    func sampleBufferForComponent(component:Component, bufferSize: Int, bufferIndex:Int, samplesRemaining:Int?) -> CMSampleBuffer? {
         
         let audioSamples = audioSamplesForRange(component: component, sampleRange: rangeForIndex(bufferIndex:bufferIndex, bufferSize: bufferSize, samplesRemaining: samplesRemaining))
         
@@ -178,7 +176,7 @@ class ToneWriter {
     
     func saveComponentSamplesToFile(component:Component, duration:Double = 3, sampleRate:Int = 44100, bufferSize:Int = 8192, destinationURL:URL, completion: @escaping (URL?, String?) -> ())  {
         
-        guard let sampleBuffer = sampleBufferForComponent(component: component, bufferIndex: 0, samplesRemaining: nil) else {
+        guard let sampleBuffer = sampleBufferForComponent(component: component, bufferSize:  bufferSize, bufferIndex: 0, samplesRemaining: nil) else {
             completion(nil, "Invalid first sample buffer.")
             return
         }
@@ -276,14 +274,14 @@ class ToneWriter {
                 
                 if samplesRemaining > 0 {
                     if bufferIndex < nbrSampleBuffers-1 {
-                        currentSampleBuffer = self?.sampleBufferForComponent(component: component, bufferIndex: bufferIndex, samplesRemaining: nil)
+                        currentSampleBuffer = self?.sampleBufferForComponent(component: component, bufferSize: bufferSize, bufferIndex: bufferIndex, samplesRemaining: nil)
                     }
                     else {
-                        currentSampleBuffer = self?.sampleBufferForComponent(component: component, bufferIndex: bufferIndex, samplesRemaining: samplesRemaining)
+                        currentSampleBuffer = self?.sampleBufferForComponent(component: component, bufferSize: bufferSize, bufferIndex: bufferIndex, samplesRemaining: samplesRemaining)
                     }
                 }
                 else {
-                    currentSampleBuffer = self?.sampleBufferForComponent(component: component, bufferIndex: bufferIndex, samplesRemaining: nil)
+                    currentSampleBuffer = self?.sampleBufferForComponent(component: component, bufferSize: bufferSize, bufferIndex: bufferIndex, samplesRemaining: nil)
                 }
                 
                 if let currentSampleBuffer = currentSampleBuffer {
