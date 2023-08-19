@@ -9,7 +9,7 @@ import SwiftUI
 import Foundation
 import AVFoundation
 
-var toneWriter = ToneWriter(sampleRate: 44100)
+var toneWriter = ToneWriter()
 
 /*
  Solve for t: e^(-2t) = 1/Int16.max, smallest positive value of Int16 (where positive means > 0)
@@ -56,27 +56,17 @@ func TestToneWriter(wavetype: WaveFunctionType, frequency:Double, amplitude: Dou
 }
 
 class ToneWriter {
-    
-        // for file writing
-    var sampleRate:Int
-    
+       
     let kAudioWriterExpectsMediaDataInRealTime = false
     let kToneGeneratorQueue = "com.limit-point.tone-generator-queue"
     
     var scale: ((Double)->Double)? // scale factor range in [0,1]
     
-    var sampleDuration = CMTime.zero
-    
-    init(sampleRate:Int) {
-        self.sampleRate = sampleRate
-        self.sampleDuration = CMTimeMakeWithSeconds((1.0 / Float64(sampleRate)), preferredTimescale: Int32.max)
-    }
-    
     deinit {
         print("ToneWriter deinit")
     }
     
-    func audioSamplesForRange(component:Component, sampleRange:ClosedRange<Int>) -> [Int16] {
+    func audioSamplesForRange(component:Component, sampleRate:Int, sampleRange:ClosedRange<Int>) -> [Int16] {
         
         var samples:[Int16] = []
         
@@ -167,16 +157,16 @@ class ToneWriter {
         return sampleBuffer
     }
     
-    func sampleBufferForComponent(component:Component, bufferSize: Int, bufferIndex:Int, samplesRemaining:Int?) -> CMSampleBuffer? {
+    func sampleBufferForComponent(component:Component, sampleRate:Int, bufferSize: Int, bufferIndex:Int, samplesRemaining:Int?) -> CMSampleBuffer? {
         
-        let audioSamples = audioSamplesForRange(component: component, sampleRange: rangeForIndex(bufferIndex:bufferIndex, bufferSize: bufferSize, samplesRemaining: samplesRemaining))
+        let audioSamples = audioSamplesForRange(component: component, sampleRate: sampleRate, sampleRange: rangeForIndex(bufferIndex:bufferIndex, bufferSize: bufferSize, samplesRemaining: samplesRemaining))
         
         return sampleBufferForSamples(audioSamples: audioSamples, bufferIndex: bufferIndex, sampleRate: sampleRate, bufferSize: bufferSize)
     }
     
     func saveComponentSamplesToFile(component:Component, duration:Double = 3, sampleRate:Int = 44100, bufferSize:Int = 8192, destinationURL:URL, completion: @escaping (URL?, String?) -> ())  {
         
-        guard let sampleBuffer = sampleBufferForComponent(component: component, bufferSize:  bufferSize, bufferIndex: 0, samplesRemaining: nil) else {
+        guard let sampleBuffer = sampleBufferForComponent(component: component, sampleRate: sampleRate, bufferSize:  bufferSize, bufferIndex: 0, samplesRemaining: nil) else {
             completion(nil, "Invalid first sample buffer.")
             return
         }
@@ -274,14 +264,14 @@ class ToneWriter {
                 
                 if samplesRemaining > 0 {
                     if bufferIndex < nbrSampleBuffers-1 {
-                        currentSampleBuffer = self?.sampleBufferForComponent(component: component, bufferSize: bufferSize, bufferIndex: bufferIndex, samplesRemaining: nil)
+                        currentSampleBuffer = self?.sampleBufferForComponent(component: component, sampleRate: sampleRate, bufferSize: bufferSize, bufferIndex: bufferIndex, samplesRemaining: nil)
                     }
                     else {
-                        currentSampleBuffer = self?.sampleBufferForComponent(component: component, bufferSize: bufferSize, bufferIndex: bufferIndex, samplesRemaining: samplesRemaining)
+                        currentSampleBuffer = self?.sampleBufferForComponent(component: component, sampleRate: sampleRate, bufferSize: bufferSize, bufferIndex: bufferIndex, samplesRemaining: samplesRemaining)
                     }
                 }
                 else {
-                    currentSampleBuffer = self?.sampleBufferForComponent(component: component, bufferSize: bufferSize, bufferIndex: bufferIndex, samplesRemaining: nil)
+                    currentSampleBuffer = self?.sampleBufferForComponent(component: component, sampleRate: sampleRate, bufferSize: bufferSize, bufferIndex: bufferIndex, samplesRemaining: nil)
                 }
                 
                 if let currentSampleBuffer = currentSampleBuffer {
