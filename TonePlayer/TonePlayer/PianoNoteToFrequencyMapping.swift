@@ -249,6 +249,7 @@ func OctavesArray() -> [[(note:String, frequency:Double)]] {
     ]
 }
  
+// See Piano key frequencies at https://en.wikipedia.org/wiki/Piano_key_frequencies
 func frequencyForPianoKey(_ x:Double) -> Double {
     return pow(2.0, ((x - Double(49)) / 12.0)) * 440.0
 }
