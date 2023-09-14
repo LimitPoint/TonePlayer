@@ -69,5 +69,8 @@ struct TonePlayerApp: App {
         WindowGroup {
             TonePlayerView(tonePlayerObservable: TonePlayerObservable(component: defaultComponent), plotObservable: PlotObservable(defaultComponent.type))
         }
+#if os(macOS)
+        .defaultSize(width: 600, height: 800)
+#endif
     }
 }
