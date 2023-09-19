@@ -112,11 +112,15 @@ class TonePlayerObservable: ObservableObject {
         }
     }
 #else
-    @Published var audioEngineConfigurationChanged = false
+    @Published var audioEngineConfigurationChangeCount:Int = 0
     
     @objc func handleAudioEngineConfigurationChange(_ notification: Notification) { 
         DispatchQueue.main.async { [weak self] in
-            self?.audioEngineConfigurationChanged = true
+            guard let self = self else {
+                return
+            }
+            
+            self.audioEngineConfigurationChangeCount += 1
         }
     }
 #endif
