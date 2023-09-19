@@ -441,9 +441,8 @@ struct TonePlayerView: View {
             }
         }
 #if os(macOS) 
-        .onChange(of: tonePlayerObservable.audioEngineConfigurationChanged) { audioEngineConfigurationChanged in
+        .onChange(of: tonePlayerObservable.audioEngineConfigurationChangeCount) { _ in
             DispatchQueue.main.async {
-                tonePlayerObservable.audioEngineConfigurationChanged = false
                 if tonePlayerObservable.isPlaying {
                     tonePlayerObservable.stopPlaying { 
                         plotObservable.stopPlayTimer()
