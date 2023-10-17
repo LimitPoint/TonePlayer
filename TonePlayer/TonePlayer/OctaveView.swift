@@ -12,7 +12,7 @@ struct OctaveView: View {
     @ObservedObject var tonePlayerObservable:TonePlayerObservable 
     @ObservedObject var plotObservable:PlotObservable 
     
-    @State var showFrequencies = false
+    @State var showFrequencies = true
     
     var body: some View {
         VStack {
