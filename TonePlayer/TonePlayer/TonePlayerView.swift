@@ -518,3 +518,21 @@ struct TonePlayerView_Previews: PreviewProvider {
         TonePlayerView(tonePlayerObservable: TonePlayerObservable(component: defaultComponent), plotObservable: PlotObservable(defaultComponent.type))
     }
 }
+
+struct ExportImageView_Previews: PreviewProvider {
+    static var previews: some View {
+        ExportImageView(tonePlayerObservable: TonePlayerObservable(component: defaultComponent), plotObservable: PlotObservable(defaultComponent.type))
+    }
+}
+
+struct PlayButton_Previews: PreviewProvider {
+    static var previews: some View {
+        PlayButton(tonePlayerObservable: TonePlayerObservable(component: defaultComponent), plotObservable: PlotObservable(defaultComponent.type))
+    }
+}
+
+struct AdjustFrequencyView_Previews: PreviewProvider {
+    static var previews: some View {
+        AdjustFrequencyView(tonePlayerObservable: TonePlayerObservable(component: defaultComponent))
+    }
+}
