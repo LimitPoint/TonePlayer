@@ -9,6 +9,20 @@ import SwiftUI
 import AVFoundation
 import Accelerate
 
+struct HelpMenu: View {
+    var body: some View {
+        Group {
+            
+            Link("Limit Point LLC", destination: URL(
+                string: "https://www.limit-point.com/")!)
+            Divider() 
+            Link("TonePlayer", destination: URL(
+                string: "https://www.limitpointstore.com/products/toneplayer/")!)
+            
+        }
+    }
+}
+
 func SampleSineAtNyquistRate(_ frequency:Int) {
     
     let f = frequency
@@ -71,6 +85,11 @@ struct TonePlayerApp: App {
         }
 #if os(macOS)
         .defaultSize(width: 600, height: 800)
+        .commands {
+            CommandGroup(replacing: .help) {
+                HelpMenu()
+            }
+        }
 #endif
     }
 }
