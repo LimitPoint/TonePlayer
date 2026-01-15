@@ -16,10 +16,10 @@ let kTemporarySubdirectoryName = "Temporary"
 let exportToneAudioDurations:[Double] = [1, 2, 3, 4, 5, 10, 30, 60, 300]
 
 // Restrict UI
-let kShowApplyToggle = true
-let kShowExportImageButton = true
-let kOpenExportedImage = true
-let kShowRandomButton = true
+let kShowApplyToggle = false
+let kShowExportImageButton = false
+let kOpenExportedImage = false
+let kShowRandomButton = false
 
 let defaultComponent = Component(type: WaveFunctionType.sine, frequency: 440.0, amplitude: 0.1, offset: 0.0)
 let defaultFavoriteFrequencies:[Double] = [40, 174, 285, 396, 417, 432, 440, 528, 639, 852, 963] // "healing frequencies"
