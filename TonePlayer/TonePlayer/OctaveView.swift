@@ -66,9 +66,10 @@ struct OctaveView: View {
                     }
                 }
             }
+#if os(macOS) // may alleviate bottom cutoff in iOS by not animating?
             .animation(.easeInOut(duration: 0.5), value: showFrequencies)
+#endif
         }
-        .background(Color.white)
     }
 }
 
